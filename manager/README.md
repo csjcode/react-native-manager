@@ -2,6 +2,8 @@
 
 From the Udemy React Native class
 
+-----------------------------------------------------------
+
 ### 104-106 SETUP
 
 * `react-native init manager`
@@ -16,6 +18,8 @@ From the Udemy React Native class
 * Import reducers into App file
 * Put reducers variable into createStore
 * commit
+
+-----------------------------------------------------------
 
 ### 106 FIREBASE SETUP
 * Make sure App.js, the root, is a class component (change to class extends and add render)
@@ -43,11 +47,15 @@ componentWillMount() {
 }
 ```
 
+-----------------------------------------------------------
+
 ### 107 Login Form Redux explanation/flow
 
 * Redux is not necessary for forms, but as it gets more complex can be helpul.
 * 4 states: email, password, loading, error
 * see images
+
+-----------------------------------------------------------
 
 ### 108. Rebuilding the Login Form
 
@@ -55,7 +63,39 @@ componentWillMount() {
 * In this example I alos copied the actions folder in case we need it later (it;s not being used yet)
 * Add login boilerplate in LoginForm.js
 
+
+-----------------------------------------------------------
+
 ### 109. Handling Form Updates with Action Creators
+
+* See diagram
+* This is a lot of work for a simple form, but the idea is to set it up for more complex forms.
+* User types something and when they do call an Action Creator
+* Pass onChangeText handler to get text being typed. {this.onEmailChange.bind(this)} (bind is for the callback)
+* Create an Action Creator `manager\src\actions\index.js`
+```javascript
+export const emailChanged = (text) => {
+  return (
+    type: 'email_changed',
+    payload: text
+  );
+};
+```
+
+-----------------------------------------------------------
+
+### 110. Wiring up Action Creators
+
+
+
+
+
+
+
+
+
+
+
 
 
 
