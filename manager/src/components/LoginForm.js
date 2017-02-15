@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 // import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { emailChanged } from '../actions/';
 import { Card, CardSection, Input, Button } from './common';
 
 class LoginForm extends Component {
   onEmailChange(text){
-    
+    this.props.emailChanged(text);
   }
   render() {
     return(
@@ -31,4 +33,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+export default connect(null, { emailChanged })(LoginForm)

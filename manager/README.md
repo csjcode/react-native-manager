@@ -86,13 +86,37 @@ export const emailChanged = (text) => {
 
 ### 110. Wiring up Action Creators
 
+* We need to wire up our Action Creator
+* Import connect and action
 
+```javascript
+import { connect } from 'react-redux';
+import { emailChanged } from '../actions/';
+```
 
+* At bottom of file: `export default connect(null, { emailChanged })(LoginForm)`
 
+* We now have acces in emailchangedText helper to this.props.emailChanged(text)
 
+#### Auth Reducer
 
+* Next we make a new reducer file: AuthReducer.js
+* We're going to use this to handle all our authentication
+* In reducer/index.js Import AuthReducer
+* Setup reducer boilerplate with inital object value
+```javascript
+const INITIAL_STATE = { email: ''}
+export default(state = INITIAL_STATE, action) => {
+  switch(action.type){
+    default:
+      return state;
+  }
+}
+```
 
+-------------------------------------------------
 
+### 111. Typed Actions
 
 
 
