@@ -202,15 +202,23 @@ case PASSWORD_CHANGED:
 * Update mapStateToProps function in LoginForm (both the function and connect export)
 * In LoginForm form html value={this.props.password}
 
-
-
 -------------------------------------------------
 
 ### 115. Synchronous and Asynchronous Action Creator
 
+* Our application now has 2 pieces of state the email and password
+* Next we have to Sign in the User
+* We should add some more state properties for the sign in
+* Proposed states: email, password, loading, error, user (Firebase model)
+* See images
+* On the login state (button press) we are going to have to wait for response
+* During this time we can have a loading state.
+* A new action creator pattern is necessary.
+* We need an async action creator
 
+-------------------------------------------------
 
-
+### 116. Introduction to Redux Thunk
 
 
 
