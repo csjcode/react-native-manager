@@ -127,7 +127,27 @@ export default(state = INITIAL_STATE, action) => {
 * now in AuthReducer `import { EMAIL_CHANGED } from './types';`
 * Then inside the AuthReducer switch `case EMAIL_CHANGED:`
 * CAREFUL of common bug: wrong variable name in import as that will trigger undefined in the console
-* 
+
+-------------------------------------------------
+
+### 112. Immutable State
+
+* Javascript references two states of the object to the same state, making it see like no change occurred even if it did.
+* See images and diagrams.
+* Therefore to compare different states we have to make the first state Immutable
+* This can be seen in the redux/reducer.js code for the Redux library
+
+-------------------------------------------------
+
+### 113. Creating Immutable State
+
+
+
+
+
+
+
+
 
 
 
