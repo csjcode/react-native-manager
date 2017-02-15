@@ -31,7 +31,7 @@ From the Udemy React Native class
 *
 
 ```javascript
-componentWillMount {
+componentWillMount() {
   const config = {
     apiKey: 'AIzaSyD6qF_57hsOn3UTCC4tN23gA9y64Ec3oE0',
     authDomain: 'react-native-manager-70a56.firebaseapp.com',
@@ -43,4 +43,27 @@ componentWillMount {
 }
 ```
 
-###
+### 107 Login Form Redux explanation/flow
+
+* Redux is not necessary for forms, but as it gets more complex can be helpul.
+* 4 states: email, password, loading, error
+* see images
+
+### 108. Rebuilding the Login Form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.
