@@ -51,7 +51,9 @@ componentWillMount() {
 
 ### 108. Rebuilding the Login Form
 
-
+* Create new components and components/common directory (copy form boilerplate)
+* In this example I alos copied the actions folder in case we need it later (it;s not being used yet)
+* 
 
 
 
