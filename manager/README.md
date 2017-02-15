@@ -220,6 +220,31 @@ case PASSWORD_CHANGED:
 
 ### 116. Introduction to Redux Thunk
 
+* We need an async action creator and action for login
+* First we need an action creator that attempts to log the user in.
+* In actions/index.js we're going to create a new Action Creator
+* `import firebase from 'firebase';`
+```javascript
+export const loginUser = (email, password) => {
+  return {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+      .then(user => console.log(user))
+  };
+};
+```
+* REDUX THUNK: We are going to use a new library Redux Thunk to handle async action creators
+* It's used to handle any type of async action creator
+* `npm install --save redux-thunk`
+* Default Action Creator rules: Action creators are functions, that return an action which must be an object with a "type" property.
+* THUNK Action Creator rules (in addition to default): Action creators are functions, return a function and that function is called with "dispatch"
+* Then we can manually dispatch to all the reducers.
+* 
+
+
+
+
+
+
 
 
 
