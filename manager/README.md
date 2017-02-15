@@ -118,9 +118,16 @@ export default(state = INITIAL_STATE, action) => {
 
 ### 111. Typed Actions
 
-
-
-
+* TYPES: The convention in Redux is to make variables in the reducer to tightly hold to actions (make them the same name)
+* To do this we'll make a separate types.js file, put the variabels in there and import it into both Reducer and Action files
+* Make a new file in the ACTIONS folder called types.js
+* example in types.js: `export const EMAIL_CHANGED = 'email_changed';` -- note: this is a named export since we plan to many (not default)
+* now in actions/index `import { EMAIL_CHANGED } from './types';` -- curly braces because we expect to pull out other things
+* replace `type: 'email_changed',` with `type: 'EMAIL_CHANGED',`
+* now in AuthReducer `import { EMAIL_CHANGED } from './types';`
+* Then inside the AuthReducer switch `case EMAIL_CHANGED:`
+* CAREFUL of common bug: wrong variable name in import as that will trigger undefined in the console
+* 
 
 
 
