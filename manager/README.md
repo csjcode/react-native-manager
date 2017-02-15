@@ -177,7 +177,41 @@ const mapStateToProps = state => {
 
 -------------------------------------------------
 
-### 114. Synchronous and Asynchronous Action Creator
+### 114. More on Immutable State
+
+* Let's do the Password part now
+* LoginForm password input html `onChangeText={this.onPasswordChange.bind(this)}`
+* New helper:
+```javascript
+onPasswordChange(text){
+  this.props.passwordChanged(text);
+}
+```
+* Add to password file `import { emailChanged, passwordChanged } from '../actions/';`
+* Now we can go to actions/index.js and define our Action Creator for PASSWORD_CHANGED
+* Next, we have to define this in the types.js file
+* Add to types.js: `export const PASSWORD_CHANGED = 'password_changed';`
+* Back to actions/index: `import { PASSWORD_CHANGED } from './types';`
+* In AuthReducer we will import the PASSWORD_CHANGED `import { PASSWORD_CHANGED } from '../actions/types';`
+* Add new case statement
+```javascript
+case PASSWORD_CHANGED:
+  return { ...state, password: action.payload};
+```
+* Update INITIAL_STATE object to include password:''
+* Update mapStateToProps function in LoginForm (both the function and connect export)
+* In LoginForm form html value={this.props.password}
+
+
+
+-------------------------------------------------
+
+### 115. Synchronous and Asynchronous Action Creator
+
+
+
+
+
 
 
 
