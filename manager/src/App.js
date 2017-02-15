@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from './reducers';
 import firebase from 'firebase';
+import LoginForm from './components/LoginForm';
 // import { Header } from './components/common';
 
 class App extends Component {
@@ -21,10 +22,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={createStore(reducers)}>
-        <View style={{flex:1}}>
-          <Text>Root component</Text>
-          {/* <Header headerText="Tech Stack" /> */}
-        </View>
+        <LoginForm/>
       </Provider>
     );
   }

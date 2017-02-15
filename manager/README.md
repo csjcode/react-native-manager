@@ -25,7 +25,7 @@ From the Udemy React Native class
 * create new project react-native-manager
 * Auth > Setup signin method > enable Email authentication > enable - SAVE
 * Top right screen > Web Setup
-* Copy code without <script> tags
+* Copy code without `<script>` tags
 * Paste into App componentWillMount (can be in separate file too)
 * import firebase library
 *
@@ -53,7 +53,9 @@ componentWillMount() {
 
 * Create new components and components/common directory (copy form boilerplate)
 * In this example I alos copied the actions folder in case we need it later (it;s not being used yet)
-* 
+* Add login boilerplate in LoginForm.js
+
+### 109. Handling Form Updates with Action Creators
 
 
 
