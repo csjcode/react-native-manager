@@ -128,6 +128,19 @@ export default(state = INITIAL_STATE, action) => {
 * Then inside the AuthReducer switch `case EMAIL_CHANGED:`
 * CAREFUL of common bug: wrong variable name in import as that will trigger undefined in the console
 
+```javascript
+import { EMAIL_CHANGED } from './types';
+
+export const emailChanged = (text) => {
+  return {
+    type: EMAIL_CHANGED,
+    payload: text
+  };
+};
+
+```
+
+
 -------------------------------------------------
 
 ### 112. Immutable State
@@ -141,8 +154,30 @@ export default(state = INITIAL_STATE, action) => {
 
 ### 113. Creating Immutable State
 
+* To change state inside the reducer (AuthReducer) `return { ...state, email: action.payload};`
+* This says: Take all the properties of my existing state object and then put email: action.payload on top of that.
+* If email: action.payload exists it will be overwritten by that new property.
+* Since we made a new object, then we can compare to see the state has changed.
+* Every single key press will call the reducer, then we need to send this piece of state back into the LoginForm component
+* mapStateToProps will help us get state back into Component
+* First we have to define mapStateToProps function at the bottom of the LoginForm, called with global application state
+```javascript
+const mapStateToProps = state => {
+  return {
+    email: state.auth.email
+  };
+}
+```
+* Next, pass that into connect function `export default connect(mapStateToProps, { emailChanged })(LoginForm)`
+* And then in the Input for email value={this.props.email}
+* All of that was for the one input!!!
+* Test in the emulator
+* Working
 
 
+-------------------------------------------------
+
+### 114. Synchronous and Asynchronous Action Creator
 
 
 
