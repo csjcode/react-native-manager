@@ -541,7 +541,34 @@ renderButton(){
 * One of the most challenging parts of this is just understanding what all the props are that can be passed
 * Scene has 4 main properties: (1) "key" how we navigate around not list building, (2) "component", (3) "title" builtin header, (4) "initial" first screen to show
 
-* 
+-------------------------------------------------
+
+### 125. Navigation in the Router
+
+```javascript
+import React from 'react';
+import { Scene, Router } from 'react-native-router-flux';
+import LoginForm from './components/';
+
+const RouterComponent = () => {
+  return (
+    <Router>
+      <Scene key="login" component={LoginForm} title="Please Log in"/>
+    </Router>
+  );
+}
+
+export default RouterComponent;
+```
+
+* Next in App component improt the Router `import Router from './Router';`
+* Place inside Provider method, replace the LoginForm
+* Remove LoginForm from import
+* Check EMULATOR - WORKING - Almost working but there is a problem -- Please Login header is over  EMAIL field
+
+-------------------------------------------------
+
+### 125. Navigation in the Router
 
 
 
