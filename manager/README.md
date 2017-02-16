@@ -625,6 +625,52 @@ export default RouterComponent;
 
 ### 130. Navigation Bar Buttons
 
+Docs for react native router flux
+https://github.com/aksonov/react-native-router-flux
+
+* The props in the docs such as for the navigation header can be added to the Scene tags
+* Add "Add" link tot he right of the nav header
+```javascript
+<Scene
+  onRight={() => console.log('right!!!')}
+  rightTitle="Add"
+  key="employeeList"
+  component={EmployeeList}
+  title="List of Employees"
+/>
+```
+* EMULATOR WORKING! - "Add" link press with console.log
+
+-------------------------------------------------
+
+### 131. Navigating to the Employee Creation Form
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
