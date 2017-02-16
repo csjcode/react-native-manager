@@ -352,11 +352,69 @@ const INITIAL_STATE = {
 
 ### 120. Creating User Accounts
 
+* If login fails we need to try to creat an account also.
+* In actions/index - If login fails we're goin to hit a catch case
+* This is what we have so far, but it;s kind of a mess, we'll be cleaning it up
+
+```javascript
+export const loginUser = ({ email, password }) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(user => {
+        dispatch({ type: LOGIN_USER_SUCCESS, payload: user })
+      .catch(()=>{
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(user => {
+          dispatch({ type: LOGIN_USER_SUCCESS, payload: user })
+        });
+      });
+  };
+};
+```
+
+* We need to make a helper function to refactor this
+* Start with this:
+```javascript
+const LoginUserSuccess = (dispatch, user) => {
+  dispatch({
+    type: LOGIN_USER_SUCCESS,
+    payload: user
+  });
+}
+```
+
+* Now delete the two original signin functions and replace with:
+
+```javascript
+export const loginUser = ({ email, password }) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(user => loginUserSuccess(dispatch,user))
+      .catch(()=>{
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(user => loginUserSuccess(dispatch,user))
+        .catch(() => loginUserFail(dispatch));
+      });
+  };
+};
+```
+
+* Now we create another const called LoginUserFail
+
+```javascript
+const LoginUserFail = (dispatch, user) => {
+  dispatch({ type: LOGIN_USER_FAIL });
+}
+```
+
+* That's a new type we are going to set up - go to top of actions/index and import LOGIN_USER_FAIL
+* Update types file `export const LOGIN_USER_FAIL = 'login_user_fail';`
+* After we attempt to create a new user if still a fail - add catch case (see above code in this section code already added/updated)
 
 
+-------------------------------------------------
 
-
-
+### 121. Showing Error Messages
 
 
 
