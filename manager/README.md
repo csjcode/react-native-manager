@@ -587,7 +587,36 @@ export default RouterComponent;
 * However, first lets try the "initial" prop on the EmployeeList -- WORKING
 * Flip EmployeeList to first Scene. It shows first. Change initial back to form
 * Make Login screen first
-*
+
+
+-------------------------------------------------
+
+### 128. Navigating Between Routes
+
+* We need to navigate between scenes.
+* After successful login when want to send user over to EmployeeList
+* We can trigger this in our Action Creator file when LOGIN_USER_SUCCESS
+* Open actions/index ad got to loginUserSuccess function
+* `import { Actions } from 'react-native-router-flux';`
+* In loginUserSuccess `Actions.employeeList();`
+* EMULATOR - WORKING - moves to next screen
+* Notice we get a back button for free.
+
+-------------------------------------------------
+
+### 129. Grouping Scenes with Buckets
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
