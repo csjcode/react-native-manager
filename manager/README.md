@@ -528,8 +528,20 @@ renderButton(){
 
 ### 124. Dealing with Navigation
 
+* At this point our login is in a usable position, now we need to address Navigation
+* NAVIGATION is a bit tricky on React Native
+* We are going to use:
 
+`npm install --save react-native-router-flux@3.35.0`
 
+* This has the concept of the "scene" which is the distinct page the user navigates to.
+* A scene is a component, that we import from that library
+* We have 3 scenes: (1) Login, (2) employeeList, (3) employeeCreate
+* Each scene has a "key" property describing what the scene shows
+* One of the most challenging parts of this is just understanding what all the props are that can be passed
+* Scene has 4 main properties: (1) "key" how we navigate around not list building, (2) "component", (3) "title" builtin header, (4) "initial" first screen to show
+
+* 
 
 
 
