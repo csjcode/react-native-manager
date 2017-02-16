@@ -331,6 +331,26 @@ onButtonPress(){
 
 ### 119. Making LoginUser More Robust
 
+* In types: `export const LOGIN_USER_SUCCESS = 'login_user_success';`
+* Import in action creator file add change down below from string to const LOGIN_USER_SUCCESS
+* Now add case to reducer
+```javascript
+case LOGIN_USER_SUCCESS:
+  return { ...state, user: action.payload };
+```
+
+* Add above in the file to initial state
+
+```javascript
+const INITIAL_STATE = {
+  email: '',
+  password: '',
+  user:null
+};
+```
+-------------------------------------------------
+
+### 120. Creating User Accounts
 
 
 
