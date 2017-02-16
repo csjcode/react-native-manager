@@ -470,9 +470,63 @@ const mapStateToProps = ({auth}) => {
 
 ### 123. Showing a Spinner on Loading
 
+* As soon as our loginUser Action Creator is called we need to dispatch an action that releases a Spinner.
+* Then when we see a success or failure, that means the process is complete and we should resolve the spinner
+* Types: Let's create a new type in the types file LOGIN_USER `export const LOGIN_USER = 'login_user';`
+* (you could also call it LOGIN_USER_START)
+* Back in actions/index - we're going to immediately dispatch an action of LoginUser
+* `dispatch({ type: LOGIN_USER })`
+* Also import in at the top of the file
+* Don't use the name START_SPINNER - LOGIN_USER is more helpful for knowing when it;s going to fire off
+* In AuthReducer: import LOGIN_USER
+* Add on case LOGIN_USER
+```javascript
+case LOGIN_USER:
+  return { ...state, loading: true, error:'' };
+```
+* Put error in there to clear out errors
+* Now at top of file add to INITIAL_STATE
+* Next we have to clear out loading, change to loading: false when success/error  `loading: false `
+* Now, into LoginForm:
+```javascript
+const mapStateToProps = ({auth}) => {
+  const { email, password, error, loading } = auth;
+  return { email, password, error, loading };
+};
+```
+* Now at the top of LoginForm we'll import our Spinner
+`import { Card, CardSection, Input, Button, Spinner } from './common';`
+* Next, inside render method, we'll pull out Button into a helper method that decides whtehr to show the Button or the Spinner
+* New helper renderButton:
+```javascript
+renderButton(){  
+  if (this.props.loading){
+    return (
+      <Spinner size="large"/>
+    );
+  } else {
+    return (
+      <Button onPress={this.onButtonPress.bind(this)}>
+        Login
+      </Button>
+    );
+  }
+}
+```
+
+### Test in EMULATOR - WORKING
 
 
+* Empty out email and password on login success in AuthReducer:
+`return { ...state, user: action.payload, error:'', loading: false, email:'', password:'' };`
 
+* Actually we can re-factor this by adding in anoter spread operator - INITIAL_STATE
+
+### Test in EMULATOR - WORKING - COMMIT
+
+-------------------------------------------------
+
+### 124. Dealing with Navigation
 
 
 
