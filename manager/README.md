@@ -455,6 +455,23 @@ const mapStateToProps = ({auth}) => {
 
 ### 122. A Firebase Gotcha
 
+* Back to AuthReducer - we need to clear out the error msg on login success
+* AuthReducer: `return { ...state, user: action.payload, error:'' };`
+
+* FIREBASE GOTCHA: Careful if you have an JAVASCRIPT error, it might just end up showing the "Authentication Failed" error
+* We are going to add an error console.log so we can catch these errors
+```javascript
+.catch((error)=>{
+  console.log(error);
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+```
+
+-------------------------------------------------
+
+### 123. Showing a Spinner on Loading
+
+
+
 
 
 
