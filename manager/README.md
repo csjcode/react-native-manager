@@ -238,11 +238,40 @@ export const loginUser = (email, password) => {
 * Default Action Creator rules: Action creators are functions, that return an action which must be an object with a "type" property.
 * THUNK Action Creator rules (in addition to default): Action creators are functions, return a function and that function is called with "dispatch"
 * Then we can manually dispatch to all the reducers.
-* 
+
+-------------------------------------------------
+
+### 117. Redux Thunk in Practice
+
+* Wire up Thunk with Redux
+* In App.js: `import ReduxThunk from 'redux-thunk';`
+* Redux Thunk is middleware - to import the middleware we have to import a helper from redux called applyMiddleware
+* `import { createStore, applyMiddleware } from 'redux';`
+* Add Middleware and Refactor in App.js:
+```javascript
+render() {
+  const store = createStore(reducers, null, applyMiddleware(ReduxThunk));
+  return (
+    <Provider store={store}>
+      <LoginForm/>
+    </Provider>
+  );
+}
+```
+* The second {} is for any initial state we want to pass to the middleware
+* applyMiddleware(ReduxThunk) is a "store enhancer", adds additional functionality to store
+* In actions/index.js:
+```javascript
+export const loginUser = (email, password) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+      .then(user => console.log(user))
+  };
+};
+```
 
 
-
-
+### 117. Redux Thunk in Practice continued
 
 
 
