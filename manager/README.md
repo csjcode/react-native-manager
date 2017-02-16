@@ -606,6 +606,33 @@ export default RouterComponent;
 
 ### 129. Grouping Scenes with Buckets
 
+* In some places it makes sense to have a Back button, in others it does not.
+* We can nest Scene components
+* First scene will be "auth"
+* Second Scene will be "main"
+* To move between main scnees you will have to change key to Scene
+```javascript
+<Scene key="auth">
+  <Scene key="login" component={LoginForm} title="Please Log in" initial/>
+</Scene>
+<Scene key="main">
+  <Scene key="employeeList" component={EmployeeList} title="List of Employees" />
+</Scene>
+```
+* change `Actions.employeeList();` to `Actions.main();`
+
+-------------------------------------------------
+
+### 130. Navigation Bar Buttons
+
+
+
+
+
+
+
+
+
 
 
 
