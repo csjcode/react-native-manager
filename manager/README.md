@@ -568,9 +568,16 @@ export default RouterComponent;
 
 -------------------------------------------------
 
-### 125. Navigation in the Router
+### 126. Addressing Styling Issues
 
+* We can make some global styling changes by passing a prop called "sceneStyle" to the Router tag
+* In Router.js `<Router sceneStyle={{ paddingTop: 60 }} />`
 
+-------------------------------------------------
+
+### 127. Displayinbg Multiple Scenes
+
+*
 
 
 
