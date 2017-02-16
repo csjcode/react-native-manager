@@ -32,11 +32,11 @@ export const loginUser = ({ email, password }) => {
   };
 };
 
-const LoginUserFail = (dispatch, user) => {
+const loginUserFail = (dispatch, user) => {
   dispatch({ type: LOGIN_USER_FAIL });
 }
 
-const LoginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user

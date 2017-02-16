@@ -375,7 +375,7 @@ export const loginUser = ({ email, password }) => {
 * We need to make a helper function to refactor this
 * Start with this:
 ```javascript
-const LoginUserSuccess = (dispatch, user) => {
+const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
@@ -402,7 +402,7 @@ export const loginUser = ({ email, password }) => {
 * Now we create another const called LoginUserFail
 
 ```javascript
-const LoginUserFail = (dispatch, user) => {
+const loginUserFail = (dispatch, user) => {
   dispatch({ type: LOGIN_USER_FAIL });
 }
 ```
@@ -416,7 +416,44 @@ const LoginUserFail = (dispatch, user) => {
 
 ### 121. Showing Error Messages
 
+* remove the console.log from AuthReducer
+* AuthReducer: import LOGIN_USER_SUCCESS and LOGIN_USER_FAIL
+* Add in case LOGIN_USER_FAIL
+* We can add in a generic piece of state called error for an error message
+```javascript
+    case LOGIN_USER_FAIL:
+      return { ...state, error: 'Authentication Failed' };
+```
+* Add default value of error:''
+* Clear out the password `return { ...state, error: 'Authentication Failed', password:'' };`
+* Lastly lets go to the LoginForm and show the Error Msg.
+* In LoginForm:
+```javascript
+const mapStateToProps = state => {
+  return {
+    email: state.auth.email,
+    password: state.auth.password,
+    error: state.auth.error
+  };
+};
+```
+* Let's refactor an destrucure this:
+```javascript
+const mapStateToProps = ({auth}) => {
+  const { email, password, error} = auth;
+  return { email, password,error };
+};
+```
 
+* In form under Password input add: `<Text style={styles.errorTextStyle}>{this.props.error}</Text>`
+* We now have to style it, add a const styles
+
+* WORKING IN SIMULATOR - note: Error msg still has to be cleared out after showing
+* COMMIT
+
+-------------------------------------------------
+
+### 122. A Firebase Gotcha
 
 
 
