@@ -575,8 +575,18 @@ export default RouterComponent;
 
 -------------------------------------------------
 
-### 127. Displayinbg Multiple Scenes
+### 127. Displaying Multiple Scenes
 
+* Create new component: src\components\EmployeeList.js
+* Complete boilerplate class based component
+* In Router  `import EmployeeList from './components/EmployeeList';`
+* We're creating a mutually exclusive scene
+* Create another scene component: `<Scene key="employeeeLst" component={EmployeeList} title="List of Employees"/>`
+* Check EMULATOR: still have login form up.
+* We have to connect the scenes.
+* However, first lets try the "initial" prop on the EmployeeList -- WORKING
+* Flip EmployeeList to first Scene. It shows first. Change initial back to form
+* Make Login screen first
 *
 
 
