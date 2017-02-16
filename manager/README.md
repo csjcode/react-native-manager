@@ -317,8 +317,26 @@ onButtonPress(){
 ### TEST IN SIMULATOR - WORKING - BASIC LOGIN
 * (note a few small errors in previous commits were modified)
 * App is working for login to firebase
+* check console log for output
 
 -------------------------------------------------
+
+### RECAP:
+* By using Thunk we expanded the range of values we can use with an Action Creator
+* The firebase.auth function use the dispatch method which allows us to manually send an action to all our reducers
+* We can now use any async action we want
+* We can fire off an async action and when complete dispatch another action (.then)
+
+-------------------------------------------------
+
+### 119. Making LoginUser More Robust
+
+
+
+
+
+
+
 
 
 
