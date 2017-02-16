@@ -250,7 +250,7 @@ export const loginUser = (email, password) => {
 * Add Middleware and Refactor in App.js:
 ```javascript
 render() {
-  const store = createStore(reducers, null, applyMiddleware(ReduxThunk));
+  const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
   return (
     <Provider store={store}>
       <LoginForm/>
@@ -270,14 +270,55 @@ export const loginUser = (email, password) => {
 };
 ```
 
+-------------------------------------------------
 
-### 117. Redux Thunk in Practice continued
+### 118. Redux Thunk in Practice continued
 
+* In actions/index: We're going to dispatch a new action on login
+```javascript
+export const loginUser = ({email, password}) => {
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password);
+      .then(user => {
+        dispatch({ type: 'LOGIN_USER_SUCCESS', payload: user})
+      });
+  };
+};
 
+```
+* In AuthReducer add console.log(action)
 
+```javascript
+export default(state = INITIAL_STATE, action) => {
+  console.log(action);
+  switch(action.type) {
+```
 
+* Now in Firebase web console we need to add a user to test - Authentication > Users https://console.firebase.google.com
+* LoginForm.js - we need to wire this action creator up to the login form
+* LoginForm add loginUser action creator- `import { emailChanged, passwordChanged, loginUser } from '../actions/';`
+* Now, add to connect call
+* Lastly add to the Button component tag
+```javascript
+<Button
+  onPress={this.onButtonPress.bind(this)}
+>Login</Button>
+```
+* Next, a helper function is added above the render:
+```javascript
+onButtonPress(){
+  const { email, password } = this.props;
+  this.props.loginUser({ email, password })
+}
+```
 
+-------------------------------------------------
 
+### TEST IN SIMULATOR - WORKING - BASIC LOGIN
+* (note a few small errors in previous commits were modified)
+* App is working for login to firebase
+
+-------------------------------------------------
 
 
 
