@@ -658,10 +658,14 @@ https://github.com/aksonov/react-native-router-flux
 * In the employeeList Scene replace the console log (right!!!) with  `onRight={() => Actions.employeeCreate()}`
 * Import Actions `import { Scene, Router, Actions } from 'react-native-router-flux';`
 * EMULATOR - WORKING - COMMIT
+
+-------------------------------------------------
+
+### 132. Building the Employee Creation Form
+
+* Now lets focus on the EmployeeCreate form
+* in EmployeeCreate - replace the import of the Text. View with Card, CardSection, Input, Button
 * 
-
-
-
 
 
 
