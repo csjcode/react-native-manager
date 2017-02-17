@@ -728,6 +728,27 @@ export default (state = INITIAL_STATE, action) = > {
 
 134. Handling Form Updates at the Reducer Level
 
+*
+* EmployeeFormReducer: Normal action.payload inside switch-case will look like `action.payload === { prop:'name', value: 'jane'}`
+* We're going to do some ES6 though to handle all cases
+* new ES6: `return { ...state, [action.payload.prop]: action.payload.value };`
+* Spread operator for spread, the square brackets are NOT an ARRAY-- it is key interpolation-- ie. if action.payload.prop is "name" then that si the key being used.
+* NEW FILE: AuthActions.js - COPY AND PASTE everything from the actions/index into this FILE!!!!
+* Now our actions/index is empty - We are going to use it liek the commons/index file (to iclude a bunch of files)
+* Inside actions/index.js
+```javascript
+export * from './AuthActions';
+export * from './EmployeeActions';
+```
+
+-------------------------------------------------
+
+135. Handling Form Updates at the Reducer Level
+
+
+
+
+
 
 
 
