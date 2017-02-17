@@ -804,7 +804,7 @@ import { employeeUpdate } from '../actions';
 * `<Picker.Item label="Monday" value="Monday" />`
 * In Picker main tag ` selectedValue={this.props.shift}`
 * Add Action Creator to input tag `onChangeText={value => this.props.employeeUpdate({ prop: 'shift', value })}`
-* **IMPORTANT**: MUST HAVE STYLES, FLEX:1 OR PICKER WONT SHOW UP `<Picker style={{ flex: 1 }}`
+* **IMPORTANT**: MUST HAVE STYLES, FLEX:1 OR PICKER WONT SHOW UP `<Picker style={{ flex: 1 }}` (note: later we will be removing)
 ```javascript
 const styles = {
   pickerTextStyle: {
@@ -820,6 +820,26 @@ const styles = {
 -------------------------------------------------
 
 ### 137. Pickers and Style Overrides
+
+Just a quick segment to get the styles ready
+
+* `<CardSection style={{ flexDirection: 'column' }}>`
+* We need to override th CardSection style
+* OVERRIDE STYLE-- WRAP STYLE IN ARRAY: in the CardSection component file, we are going to wrap the style in an array
+* CardSection.js - `<View style={[styles.containerStyle, props.style]}>`
+* NOW, we have ot REMOVE the  `<Picker style={{ flex: 1 }}`
+* WARNING: must remove the flex 1 or Picker will not show.
+#### EMULATOR - WORKING - COMMIT
+
+
+
+-------------------------------------------------
+
+### 138. Firebase JSON Schema
+
+
+
+
 
 
 
