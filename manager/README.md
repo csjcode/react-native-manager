@@ -645,6 +645,20 @@ https://github.com/aksonov/react-native-router-flux
 
 ### 131. Navigating to the Employee Creation Form
 
+* Create a new component EmployeeCreate
+* Create a new scene in Router:
+```javascript
+<Scene
+  component={EmployeeCreate}
+  key="employeeCreate"
+  title="Create Employee"
+>
+</Scene>
+```
+* In the employeeList Scene replace the console log (right!!!) with  `onRight={() => Actions.employeeCreate()}`
+* Import Actions `import { Scene, Router, Actions } from 'react-native-router-flux';`
+* EMULATOR - WORKING - COMMIT
+* 
 
 
 
