@@ -788,12 +788,45 @@ import { employeeUpdate } from '../actions';
 * Add input tage value ie. `value={this.props.name}`
 * Add Action Creator to input tag `onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}`
 
-* EMULATOR - WORKING! - COMMIT
 
+* EMULATOR - WORKING! - COMMIT
 
 
 -------------------------------------------------
 
+### 136. The Picker Component
+
+* We're going to make a Picker component - Picker is like a React Native Select Input component
+* `import { Picker, Text } from 'react-native';`
+* We're going to put the new Picker Component in the unused CardSection we had
+* In here we're going to have a list of shifts and we'll need a onst style alo
+* `<Text style={styles.pickerTextStyle}>Shift</Text>`
+* `<Picker.Item label="Monday" value="Monday" />`
+* In Picker main tag ` selectedValue={this.props.shift}`
+* Add Action Creator to input tag `onChangeText={value => this.props.employeeUpdate({ prop: 'shift', value })}`
+* **IMPORTANT**: MUST HAVE STYLES, FLEX:1 OR PICKER WONT SHOW UP `<Picker style={{ flex: 1 }}`
+```javascript
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  }
+};
+
+```
+
+#### EMULATOR - WORKING - COMMIT
+
+-------------------------------------------------
+
+### 137. Pickers and Style Overrides
+
+
+
+
+
+
+-------------------------------------------------
 
 ```javascript
 
