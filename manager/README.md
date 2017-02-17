@@ -4,6 +4,30 @@ From the Udemy React Native class
 
 -----------------------------------------------------------
 
+### REDUX WORKFLOW:
+
+Action Creator -> ACTION -> TYPE (pulled by both action/reducer) -> REDUCER -> COMBINE REDUCERS -> NEW COMPONENT/FORM -> mapStateToProps/Connect -> PROPS in COMPONENT
+
+#### Pattern for new Actions
+
+1. ACTION: Make Action Creator (actions/index or new file)
+1. -- Export, Return a type:CONSTANT, payload:""
+1. -- At the top of the file import the CONSTANT from types
+1. TYPE: export CONSTANT = constant;
+1. REDUCER: import CONSTANT from types
+1. -- INITIAL_STATE
+1. -- export, switch, default, return state
+1. COMBINE REDUCERS: reducers/index - We will add the new reducer in the combined reducers file
+1. NEW COMPONENT/FORM:
+1. --- (a) Import new action from actions and
+1. --- (b) connect from react-redux,
+1. --- (c) connect and mapStateToProps at the bottom
+1. --- (d) mapStateToProps constant
+1. --- (e) on input tag value add this.prop.[values] to form/component
+1. --- (f) if form on input tag make sure to add action creator `onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}`
+
+-----------------------------------------------------------
+
 ### 104-106 SETUP
 
 * `react-native init manager`
@@ -673,14 +697,21 @@ https://github.com/aksonov/react-native-router-flux
 
 #### Pattern for new Actions
 
-1. Action: Make Action Creator (actions/index or new file)
+1. ACTION: Make Action Creator (actions/index or new file)
 1. -- Export, Return a type:CONSTANT, payload:""
 1. -- At the top of the file import the CONSTANT from types
-1. Types: export CONSTANT = constant;
-1. Reducer: import CONSTANT from types
+1. TYPE: export CONSTANT = constant;
+1. REDUCER: import CONSTANT from types
 1. -- INITIAL_STATE
 1. -- export, switch, default, return state
-
+1. COMBINE REDUCERS: reducers/index - We will add the new reducer in the combined reducers file
+1. NEW COMPONENT/FORM:
+1. --- (a) Import new action from actions and
+1. --- (b) connect from react-redux,
+1. --- (c) connect and mapStateToProps at the bottom
+1. --- (d) mapStateToProps constant
+1. --- (e) on input tag value add this.prop.[values] to form/component
+1. --- (f) if form on input tag make sure to add action creator `onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}`
 
 -------------------------------------------------
 
@@ -726,7 +757,7 @@ export default (state = INITIAL_STATE, action) = > {
 
 -------------------------------------------------
 
-134. Handling Form Updates at the Reducer Level
+### 134. Handling Form Updates at the Reducer Level
 
 *
 * EmployeeFormReducer: Normal action.payload inside switch-case will look like `action.payload === { prop:'name', value: 'jane'}`
@@ -743,14 +774,21 @@ export * from './EmployeeActions';
 
 -------------------------------------------------
 
-135. Handling Form Updates at the Reducer Level
+### 135. Dynamic Property Updates
 
+* In reducers/index - `import EmployeeFormReducer from './EmployeeFormReducer';`
+* And to combine reducers `employeeForm: EmployeeFormReducer`
+* In the EmployeeCreate form we have to import connect:
+```javascript
+import { connect } from 'react-redux';
+import { employeeUpdate } from '../actions';
+```
+* Add export below: `export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);`
+* Add mapStateToProps constant (see file)
+* Add input tage value ie. `value={this.props.name}`
+* Add Action Creator to input tag `onChangeText={value => this.props.employeeUpdate({ prop: 'name', value })}`
 
-
-
-
-
-
+* EMULATOR - WORKING! - COMMIT
 
 
 
