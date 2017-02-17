@@ -665,27 +665,80 @@ https://github.com/aksonov/react-native-router-flux
 
 * Now lets focus on the EmployeeCreate form
 * in EmployeeCreate - replace the import of the Text. View with Card, CardSection, Input, Button
-* 
+* Add Card, 3 CardSections and Button
+
+-------------------------------------------------
+
+### 133. Employee Form Actions - make new Action Creators and file
+
+#### Pattern for new Actions
+
+1. Action: Make Action Creator (actions/index or new file)
+1. -- Export, Return a type:CONSTANT, payload:""
+1. -- At the top of the file import the CONSTANT from types
+1. Types: export CONSTANT = constant;
+1. Reducer: import CONSTANT from types
+1. -- INITIAL_STATE
+1. -- export, switch, default, return state
+
+
+-------------------------------------------------
+
+* Make Action Creators to ahandle the input boxes.
+* In action creator file (actions/index) our actions are all authentication related currently-- probably shouldn't mix in new ones.
+* Let's make a new action creator file.
+* Create new file: src\components\actions\EmployeeActions.js
+```javascript
+export const employeeUpdate = ({ prop,value }) => {
+};
+```
+
+* The prop is going to be a key value like "name" and then there would be the new value of the name.
+* So this one action creator can be used for different keys like "name","phone" etc.
+* Inside we create our action
+
+```javascript
+export const employeeUpdate = ({ prop,value }) => {
+  return {
+    type: EMPLOYEE_UPDATE,
+    payload: { prop, value }
+  };
+};
+```
+
+* At the top import `import { EMPLOYEE_UPDATE } from './types';`
+* Add to types `export const EMPLOYEE_UPDATE = 'employee_update';`
+* Create new reducer: src\reducers\EmployeeFormReducer.js
+
+```javascript
+import { EMPLOYEE_UPDATE } from '../actions/types';
+
+const INITIAL_STATE = {}
+
+export default (state = INITIAL_STATE, action) = > {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+```
+
+-------------------------------------------------
+
+134. Handling Form Updates at the Reducer Level
 
 
 
 
 
 
+-------------------------------------------------
 
 
+```javascript
 
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
