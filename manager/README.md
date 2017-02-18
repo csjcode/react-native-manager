@@ -837,11 +837,18 @@ Just a quick segment to get the styles ready
 
 ### 138. Firebase JSON Schema
 
+* We're going to be saving using the Employee model, and object with name, phone and shift.
+* In Firebase console, go to Database table-
+* Think of the database as a data object like in Javascript.
+* The schema we are using is commonly used with Firebase and can be reused on other projects
+* We'll have a collection users, and then each user will have a collection of employees with name, phone and shift.
+* We're going to need some SECURITY segmenting the Users
+*
 
 
+-------------------------------------------------
 
-
-
+### 139. Data Security in Firebase
 
 
 
