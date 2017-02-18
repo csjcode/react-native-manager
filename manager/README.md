@@ -875,6 +875,34 @@ Just a quick segment to get the styles ready
 
 ### 140. Creating Records with Firebase
 
+* Now we need to take the data input in the app and save in Firebase
+* On the Create button (to create an employee) we're going to make a handler that calls an Action Creator which sends to data to Firebase
+* If successful it will move us back to Employee List History
+* EmployeeCreate.js: Add helper function onButtonPress
+```javascript
+onButtonPress() {
+  const { name, phone, shift } = this.props;
+
+  this.props.employeeCreate({ name, phone, shift });
+}
+```
+* Next, in Button tag `<Button onPress={this.onButtonPress.bind(this)}>`
+* Open up EmployeeActions in actions folder
+* Add the following:
+
+```javascript
+export const employeeCreate = ({ name, phone, shift }) => {
+  console.log(name, phone, shift);
+};
+```
+
+* Back to EmployeeCreate.js: `import { employeeUpdate, employeeCreate } from '../actions';`
+* Finally add to connect helper: `export default connect(mapStateToProps, {employeeUpdate, employeeCreate})(EmployeeCreate);`
+* Input data except for shift
+* EMULATOR - NOT WORKING - error Actions Must Be Plain Objects - use custom middleware
+* Reason: shift is undefined (we didn't set it)
+* We have to fix this in the Picker
+* 
 
 
 
