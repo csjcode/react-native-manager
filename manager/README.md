@@ -1081,13 +1081,20 @@ case EMPLOYEES_FETCH_SUCCESS:
 default:
 ```
 
+-------------------------------------------------
+### 146. Dynamic Data Display
 
-
-
-
-
-
-
+* We're going to be using a ListView primitive
+* `import { ListView, View, Text } from 'react-native';`
+* Now normally we would be making the ds - datasource
+* However, problem is the fetch to get the data is async so wemight not have the data yet on componentWillMount
+* So how to remedy? We'll do some refactoring in a new lifecylce method called: componentWillReceiveProps
+* componentWillReceiveProps can be used if we expect to have our props updated
+* nextProps will load the next props update
+* We want to get our data source both (1) when mounting (2) and on updates.
+* So let's keep both mounting but create a thrid data method called createDataSource
+* createDataSource is called in both componentWillMount and componentWillReceiveProps
+* 
 
 
 
