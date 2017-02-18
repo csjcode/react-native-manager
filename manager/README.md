@@ -843,12 +843,52 @@ Just a quick segment to get the styles ready
 * The schema we are using is commonly used with Firebase and can be reused on other projects
 * We'll have a collection users, and then each user will have a collection of employees with name, phone and shift.
 * We're going to need some SECURITY segmenting the Users
-*
 
 
 -------------------------------------------------
 
 ### 139. Data Security in Firebase
+
+* In the Firebase Console click the Rules tab - this changes the security rules about what users can read or write
+* Delete what is in the Rules object
+* New Rules object in Firebase Console
+
+```
+{
+  "rules": {
+		"users": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}
+```
+
+* This tells firebase to set up read/write for a user only if the object $uid is equal to the currently logged in user
+* If not equal they will not have read/write alert-success
+* PUBLISH: Next we have to publish the ruleset by clicking the PUBLISH button
+* PUBLISHED.
+
+-------------------------------------------------
+
+### 140. Creating Records with Firebase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
