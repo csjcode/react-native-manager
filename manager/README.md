@@ -936,15 +936,40 @@ export const employeeCreate = ({ name, phone, shift }) => {
 * `.push({ name, phone, shift })` allows us to push the data into the database
 
 
-EMULATOR - Red Screen but adds data to Firebase
+#### EMULATOR - Red Screen but adds data to Firebase
 
 -------------------------------------------------
 
-### 143. Successful Data Save to Firebase
+### 143. Resetting Form Properties
+
+* We're going to use Redux Thunk - we don't really have to use it but this is useful to update data in the background
+* Update the action
+```javascript
+firebase.database().ref(`/users/${currentUser.uid}/employees`)
+  .push({ name, phone, shift })
+  .then(() => {
+    Actions.employeeList();
+  });
+```
+* `import { Actions } from 'react-native-router-flux';`
+
+* NOTE: THERE WAS A PROBLEM MOVING TO Actions.employeeList(); SO I CHANGED TO:
+
+`.then(() => Actions.main().employeeList(type: 'reset'));};`
+
+#### EMULATOR WORKING - COMMIT
+
+
 
 
 
 -------------------------------------------------
+
+
+
+
+
+
 
 
 ```javascript
@@ -961,11 +986,6 @@ export const employeeCreate = ({ name, phone, shift }) => {
   };
 };
 ```
-
-
-
-
-
 
 
 
