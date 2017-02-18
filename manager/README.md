@@ -1164,6 +1164,51 @@ render() {
 
 #### EMULATOR - WORKING - COMMIT
 
+-------------------------------------------------
+
+### 149. Reusing the Employee Form
+
+* We want to expand the employee name in ListItem
+```javascript
+import { Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+```
+
+* Change render CardSecton and replace with:
+```javascript
+return (
+  <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
+    <View>
+      <CardSection>
+        <Text style={styles.titleStyle}>
+          {name}
+        </Text>
+      </CardSection>
+    </View>
+  </TouchableWithoutFeedback>
+);
+```
+
+* `import {Actions} from react-native-router-flux`
+
+* Add onRowPress helper
+```javascript
+onRowPress() {
+  Actions.employeeCreate();
+}
+```
+
+* EMULATOR - WORKING, but does not show any data in fields - we have not wired that up yet
+
+* We need EmployeeCreate to prload data - we could use Action Creator, but might get messy
+* We need to have the form display data form the employee pressed.
+* Let's try to pass props:
+* `Actions.employeeCreate({ employee: this.props.employee });`
+* In the EmployeeCreate.js component `console.log(this.props.employee);` so we can check if props are being passed
+* At this point it's showing the data in the console
+
+#### EMULATOR - WORKING, with props being passed
+
 
 
 
