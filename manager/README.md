@@ -1021,6 +1021,81 @@ export const employeesFetch = () => {
 
 
 -------------------------------------------------
+### 145. Storing Data by ID
+
+* Call action creator and receive data in the reducer
+* Import connect `import { connect } from 'react-redux';`
+* Import employeesFetch `import { employeesFetch } from '../actions';`
+* At bottom: `export default connect(null, {employeesFetch})(EmployeeList);`
+* Add lifecycle method componentWillMount
+```javascript
+componentWillMount() {
+  this.props.employeesFetch();
+}
+```
+* Make new REDUCER EmployeeReducer.js:
+
+```javascript
+import {
+  EMPLOYEES_FETCH_SUCCESS
+} from '../actions/types';
+
+const INITIAL_STATE = {};
+
+export default (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case EMPLOYEES_FETCH_SUCCESS:
+      console.log(action);
+      // return action.payload;
+    default:
+      return state;
+  }
+};
+
+```
+
+* Add reducer to the combined reducer file index.js:
+
+```javascript
+import { combineReducers } from 'redux';
+import AuthReducer from './AuthReducer';
+import EmployeeFormReducer from './EmployeeFormReducer';
+import EmployeeReducer from './EmployeeReducer';
+
+export default combineReducers({
+  auth: AuthReducer,
+  employeeForm: EmployeeFormReducer,
+  employees: EmployeeReducer
+});
+```
+
+#### EMULATOR - for console.log show payload is a list of employe objects - COMMIT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------
 
 ```javascript
 
