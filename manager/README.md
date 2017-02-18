@@ -902,9 +902,24 @@ export const employeeCreate = ({ name, phone, shift }) => {
 * EMULATOR - NOT WORKING - error Actions Must Be Plain Objects - use custom middleware
 * Reason: shift is undefined (we didn't set it)
 * We have to fix this in the Picker
-* 
 
+-------------------------------------------------
 
+### 141. Default Form Values
+
+* STATE: The state of our form is being held by the EmployeeFormReducer
+* By default the EmployeeFormReducer does not have a starting or initial Values
+* There are a couple ways to handle this, here is one:
+* (1) Could just set shift to Monday in EmployeeFormReducer
+* (2) However, another way to do it is to add a componentWillMount
+* On mounting we can call the action creator
+* (3) The way we are going to do it is when we call the employeeCreate action creator in the onButtonPress helper:
+* `this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });`
+* Next thing we'll do is send this out to Firebase
+
+-------------------------------------------------
+
+### 141. Default Form Values
 
 
 
