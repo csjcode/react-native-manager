@@ -1046,7 +1046,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case EMPLOYEES_FETCH_SUCCESS:
       console.log(action);
-      // return action.payload;
+      return action.payload;
     default:
       return state;
   }
@@ -1069,9 +1069,17 @@ export default combineReducers({
 });
 ```
 
-#### EMULATOR - for console.log show payload is a list of employe objects - COMMIT
+#### EMULATOR - for console.log show payload is a list of employee objects - COMMIT
 
-
+* The employee list returned is an OBJECT and NOT and array, to help with the Redux requirement of always returning a reducer
+* This syntax helps bcause if we want to to edit emplyees later we can do something like  `{ ...state, [id]: action.payload } `
+* Put action.payload in place of console.log
+```javascript
+case EMPLOYEES_FETCH_SUCCESS:
+// console.log(action);
+  return action.payload;
+default:
+```
 
 
 
