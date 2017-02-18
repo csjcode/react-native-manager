@@ -986,31 +986,38 @@ export const employeeCreate = ({ name, phone, shift }) => {
 
 -------------------------------------------------
 
+144. Fetching Data from Firebase
+
+* Now we will get the list of Employees from Firebase
+* EmployeeList.js
+
+1. We will make an action creator to fetch new employes.
+1. Add a new reducer to store that list
+1. Come back to the EmployeeList component to display it.
 
 
-
-
-
-
+* In EmployeeActions:
 
 ```javascript
-export const employeeCreate = ({ name, phone, shift }) => {
+export const employeesFetch = () => {
   const { currentUser } = firebase.auth();
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
-      .push({ name, phone, shift })
-      .then(() => {
-        dispatch({ type: EMPLOYEE_CREATE });
-        Actions.main().employeeList({ type: 'reset' });
+      .on('value', snapshot => {
+        dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
       });
   };
 };
+
 ```
 
-
-
-
+* Import `EMPLOYEES_FETCH_SUCCESS`
+* We created a ref in our original Firebase insert, we will use that to get data back out.
+* `snapshot.val() ` is how we actually get the data out
+* Snapshot is not the actual data is an object that describes the data, so to get actual data `snapshot.val()`
+* The snapshot function will now be called anytme new data comes across. Firebase and Redux work together well
+* Add in types.js `export const EMPLOYEES_FETCH_SUCCESS = 'employees_fetch_success';`
 
 
 -------------------------------------------------
