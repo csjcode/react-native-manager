@@ -959,7 +959,28 @@ firebase.database().ref(`/users/${currentUser.uid}/employees`)
 
 #### EMULATOR WORKING - COMMIT
 
+* Only problem is the input data has not ben cleared
+* We can solve this by putting in an action
 
+```javascript
+export const employeeCreate = ({ name, phone, shift }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+      .push({ name, phone, shift })
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE });
+        Actions.main().employeeList({ type: 'reset' });
+      });
+  };
+};
+```
+
+* Add into types: `export const EMPLOYEE_CREATE = 'employee_create';`
+* Now in reducers `case EMPLOYEE_CREATE: return INITIAL_STATE;`
+
+#### EMULATOR WORKING - DATA CLEARED
 
 
 
@@ -981,7 +1002,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
       .push({ name, phone, shift })
       .then(() => {
         dispatch({ type: EMPLOYEE_CREATE });
-        Actions.employeeList({ type: 'reset' });
+        Actions.main().employeeList({ type: 'reset' });
       });
   };
 };

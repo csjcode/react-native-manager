@@ -13,13 +13,14 @@ export const employeeUpdate = ({ prop, value }) => {
 };
 
 export const employeeCreate = ({ name, phone, shift }) => {
-
   const { currentUser } = firebase.auth();
-  // console.log(`/users/${currentUser.uid}/employees` + ' ' + name, phone, shift);
-  // firebase.database.enableLogging(true);
-  return () => {
+
+  return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees`)
       .push({ name, phone, shift })
-      .then(() => Actions.main().employeeList(type: 'reset'));
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE });
+        Actions.main().employeeList({ type: 'reset' });
+      });
   };
 };
