@@ -1131,6 +1131,48 @@ const mapStateToProps = state => {
 #### EMULATOR - WORKING - COMMIT
 
 
+-------------------------------------------------
+
+148. List Building in Employee List
+
+* We need to add a few new sections to the EmployeeList component
+* Replace View tag with a ListView (remove View,Text primitives from import)
+* `import { ListItem } from './ListItem';`
+* Create new component called ListItem
+* Add class boilerplate and CardSection, Text and styles
+* See code below for full code we are adding
+* React Native has an issue, to enable with empty rows (might be changed in future versions) so add `enableEmptySections`
+* `renderRow={this.renderRow}` is used to render a single row for our  `dataSource`
+* In the renderRow help function we are going to pass an employee method into a ListItem tag prop
+
+
+```javascript
+renderRow(employee) {
+  return <ListItem employee={employee} />;
+}
+
+render() {
+  return (
+    <ListView
+      enableEmptySections
+      dataSource={this.dataSource}
+      renderRow={this.renderRow}
+    />
+  );
+}
+```
+
+#### EMULATOR - WORKING - COMMIT
+
+
+
+
+
+
+
+
+
+
 
 
 
