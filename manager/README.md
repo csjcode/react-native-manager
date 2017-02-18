@@ -1210,6 +1210,43 @@ onRowPress() {
 #### EMULATOR - WORKING, with props being passed
 
 
+-------------------------------------------------
+
+### 150. Create vs Edit Forms
+
+* Remove console.log (from previous section in EmployeeCreate)
+* The topic of how to use the create for vs. edit is a bit controversial
+* Reuse create component or make a new one?
+* see image
+* Some aspects of the forms ar shared but there are some differences
+* Another factor
+
+-------------------------------------------------
+
+### 151. Reusable Forms
+
+* We are going to create 2 separate components and another new form file EmployeeForm.js
+* EmployeeCreate and EmployeeEdit
+* We're going to create EmployeeForm.js.
+* Copy the first 3 CardSections from render in EmployeeCreate
+* Paste it inside a View tag in EmployeeForm
+* Add relevant imports to the top of EmployeeForm
+* Move styles over
+* EmployeeForm.js: import connect and employeeUpdate from actions
+* Update the connect helper at bottom of file
+* Define mapStateToProps
+* EmployeeCreate: rmeove improts we are not using now
+* Import EmployeeForm
+* Before Button CardSection `<EmployeeForm {...this.props} />`
+* Any props get passed off to EmployeeForm {...this.props}
+
+#### EMULATOR - WORKING, same as before refactoring
+
+
+-------------------------------------------------
+
+### 152. Reusable Forms
+
 
 
 
