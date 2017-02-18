@@ -1274,14 +1274,45 @@ export default connect()(EmployeeEdit);
 ```
 
 * We still need connect because we will call an action creator for the Edit later
-* Rigth now leave the connect blank until we create the action
+* Right now leave the connect blank until we create the action
 * Next step will be IDing which employe to get data from and fill in form
 * We need a new action to Edit an employee rather than just creating one
-* 
 
+-------------------------------------------------
 
+### 153. A Standalone Employee Edit Form
 
+* We need to add a new scene for EmployeeEdit
+* in Router import EmployeeEdit
+* `import EmployeeEdit from './components/EmployeeEdit';`
+* Add scene: `<Scene key="employeeEdit" component={EmployeeEdit} title="Edit Employee" />`
+* Next in EmployeeEdit.js we have to preload data for the employee featrued in that form
+* EmployeeEdit.js: `import { employeeUpdate } from '../actions';`
+* We need to import lodash again:  `import _ from 'lodash';`
+* Setup componentWillMount and inside for each key-value pair, take the value and prop (key) and call the action creator.
+```javascript
+componentWillMount() {
+  _.each(this.props.employee, (value, prop) => {
+    this.props.employeeUpdate({ prop, value });
+  });
+}
+```
+* In Button give it a handler of onPress
+* inside onButtonPress we need to console.log name, phone, shift
+* At the bottom we need to define mapStateToProps
+```javascript
+const mapStateToProps = (state) => {
+  const { name, phone, shift } = state.employeeForm;
 
+  return { name, phone, shift };
+};
+```
+* At bottom fill in connect with mapStateToProps
+* Make sure in ListItem to change from Action.employeeCreate to  `Actions.employeeEdit({ employee: this.props.employee });`
+* We are not changing the underlying employee model data
+* Next we'll make an action creator to save thee changes
+
+#### EMULATOR - WORKING - but on saving  in the Edit screen only shows in console log
 
 
 
