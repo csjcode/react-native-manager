@@ -9,6 +9,7 @@
   "dependencies": {
     "eslint-rallycoding": "^1.2.0",
     "firebase": "^3.6.9",
+    "lodash": "^4.17.4",
     "react": "~15.4.0",
     "react-native": "0.41.2",
     "react-native-router-flux": "^3.35.0",

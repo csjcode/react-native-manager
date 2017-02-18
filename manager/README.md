@@ -1082,7 +1082,7 @@ default:
 ```
 
 -------------------------------------------------
-### 146. Dynamic Data Display
+### 146. Dynamic DataSource Building
 
 * We're going to be using a ListView primitive
 * `import { ListView, View, Text } from 'react-native';`
@@ -1094,15 +1094,41 @@ default:
 * We want to get our data source both (1) when mounting (2) and on updates.
 * So let's keep both mounting but create a thrid data method called createDataSource
 * createDataSource is called in both componentWillMount and componentWillReceiveProps
-* 
 
 
+-------------------------------------------------
+### 147. Transforming Objects to Arrays
 
+* CONVERT to ARRAY: There is another problem... the employees are objects, not an array and this.dataSource needs an ARRAY..
+* mapStateToProps: Also we have to do mapStateToProps
+* First install lodash `npm install --save lodash`
+* `import _ from 'lodash';`
+* mapStateToProps:
 
+```javascript
+const mapStateToProps = state => {
+  const employees = _.map(state.employees, (val, uid) => {
+    return { ...val, uid };
+  });
 
+  return { employees };
+};
+```
 
+* What this says is `state.employees` is an object with many key-value pairs.
+* For each key-value pair run the fat arrow function.  Each pair will be called with the value (user model with name, state, shift) and key
+* Return `...val,` all the employees of the object model and  `uid` user id
+* This will look like this for each object in the array: `{ shift:'Monday', name:'Steve', phone:'555-5555', id:'ase42wrr324uduga87' }`
+* Collect all those object and put in the "employees" array
+* Last step of this code is to just return this array: `return { employees };`
 
+* Last part of the Component is to add mapStateToProps in the Connect helper
 
+`export default connect(mapStateToProps, {employeesFetch})(EmployeeList);`
+
+* Add console.log to verify it actually works in render method `console.log(this.props)`
+
+#### EMULATOR - WORKING - COMMIT
 
 
 
