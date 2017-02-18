@@ -919,12 +919,48 @@ export const employeeCreate = ({ name, phone, shift }) => {
 
 -------------------------------------------------
 
-### 141. Default Form Values
+### 142. Successful Data Save to Firebase
+
+* In employeeCreate Action Creator EmployeeActions
+* Import Firebase library `import firebase from 'firebase';`
+* change code for the employeeCreate action:
+```javascript
+export const employeeCreate = ({ name, phone, shift }) => {
+  const { currentUser } = firebase.auth();
+  firebase.database().ref(`/users/${currentUser.uid}/employees`)
+    .push({ name, phone, shift })
+};
+```
+* `firebase.database().ref(`/users/${currentUser.uid}/employees`)` - sets up our data in our schema
+* `${currentUser.uid}` is from line above `const { currentUser } = firebase.auth();`
+* `.push({ name, phone, shift })` allows us to push the data into the database
+
+
+EMULATOR - Red Screen but adds data to Firebase
+
+-------------------------------------------------
+
+### 143. Successful Data Save to Firebase
 
 
 
+-------------------------------------------------
 
 
+```javascript
+export const employeeCreate = ({ name, phone, shift }) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees`)
+      .push({ name, phone, shift })
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE });
+        Actions.employeeList({ type: 'reset' });
+      });
+  };
+};
+```
 
 
 
