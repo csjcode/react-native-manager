@@ -1245,13 +1245,39 @@ onRowPress() {
 
 -------------------------------------------------
 
-### 152. Reusable Forms
+### 152. A Standalone Employee Edit Form
 
+* We need to make an EditEmployee form
 
+```javascript
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import EmployeeForm from './EmployeeForm';
+import { Card, CardSection, Button } from './common';
 
+class EmployeeEdit extends Component {
+  render() {
+    return (
+      <Card>
+        <EmployeeForm />
+        <CardSection>
+          <Button>
+            Save Changes
+          </Button>
+        </CardSection>
+      </Card>
+    );
+  }
+}
 
+export default connect()(EmployeeEdit);
+```
 
-
+* We still need connect because we will call an action creator for the Edit later
+* Rigth now leave the connect blank until we create the action
+* Next step will be IDing which employe to get data from and fill in form
+* We need a new action to Edit an employee rather than just creating one
+* 
 
 
 
