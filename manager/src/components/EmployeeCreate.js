@@ -5,6 +5,10 @@ import { Card, CardSection, Button } from './common';
 import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component {
+  componentWillMount(){
+    let { name, phone, shift } = this.props;
+    name, phone, shift = '';
+  }
   onButtonPress() {
     const { name, phone, shift } = this.props;
 

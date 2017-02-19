@@ -1348,11 +1348,73 @@ onButtonPress() {
 
 * Remember that `this.props.employee.uid` is passed from the Action in EmployeeList
 
-* EMULATOR - WORKING - COMMIT
+#### EMULATOR - WORKING - COMMIT
+
+* console log shows saved
+* Firebase shows saving in the Edit screen is working
+* However we still need to reset the form
 
 -------------------------------------------------
 
-### 154. Updating Firebase Records
+### 155. Clearing Form Attributes
+
+
+* Now we need to navigate the user back to the employee list after saving changes
+* EmployeeActions - check to make sure we have imported Actions
+* Go to bottom of page for employeeSave action
+* Replace console log with `Actions.employeeList({ type: 'reset' });`
+* In EMPLOYEE_CREATE we did a dispatch to rest the attributes in the form - we can do the same here.
+* Add dispatch method in return
+```javascript
+return (dispatch) => {
+  firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+    .set({ name, phone, shift })
+    .then(() => {
+      dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
+      Actions.employeeList({ type: 'reset' });
+    });
+};
+```
+
+-------------------------------------------------
+
+### 156. Texting employees
+
+* We will be adding the npm module react-native-communications
+
+* https://github.com/anarchicknight/react-native-communications
+
+* https://www.npmjs.com/package/react-native-communications
+
+* `npm install --save react-native-communications`
+* In EmployeeEdit:
+* `import Communications from 'react-native-communications';`
+
+```javascript
+onTextPress() {
+  const { phone, shift } = this.props;
+
+  Communications.text(phone, `Your upcoming shift is on ${shift}`);
+}
+```
+
+* Add new Card section
+
+```javascript
+<CardSection>
+  <Button onPress={this.onTextPress.bind(this)}>
+    Text Schedule
+  </Button>
+</CardSection>
+```
+
+
+* So far Text Button press is NOT WORKING
+
+
+-------------------------------------------------
+
+### 157. Modals as a Reusable Component
 
 
 
