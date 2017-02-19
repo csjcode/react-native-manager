@@ -1527,6 +1527,54 @@ const styles = {
 
 -------------------------------------------------
 
+### 160. Employee Delete Action Creator
+
+* Update the confirm with the onAccept and onDecline
+
+```javascript
+<Confirm
+  visible={this.state.showModal}
+  onAccept={this.onAccept.bind(this)}
+  onDecline={this.onDecline.bind(this)}
+>
+```
+
+* onDecline is easy we can just `this.setState({ showModal: false });`
+
+
+```javascript
+onAccept() {
+
+}
+
+onDecline() {
+  this.setState({ showModal: false });
+}
+
+```
+
+
+* We need to create a new ACTION
+* We need to use the uid `export const employeeDelete = ({ uid }) => {`
+* Delete:
+```javascript
+return () => {
+  firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+    .remove()
+    .then(() => {
+      Actions.employeeList({ type: 'reset' });
+    });
+};
+```
+* NOTE on DISPATCH: on the Actions  normally we would use dispatch in the return `return (dispatch) => {` however, it's not needed in this case since we are calling the employeesFetch from the EmployeeList page.
+
+* Last thing we need to is hook up the Action Creator
+
+
+-------------------------------------------------
+
+
+
 ```javascript
 
 ```
