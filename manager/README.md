@@ -1471,8 +1471,59 @@ export { Confirm };
 ```
 
 * We're passing in a prop for visible because it may or may not be visible
-* 
 
+
+-------------------------------------------------
+
+### 159. Styling the Modal
+
+* We need to setup 3 styles: cardSectionStyle, textStyle, containerStyle
+
+```javascript
+const styles = {
+  cardSectionStyle: {
+    justifyContent: 'center'
+  },
+  textStyle: {
+    flex: 1,
+    fontSize: 18,
+    textAlign: 'center',
+    lineHeight: 40
+  },
+  containerStyle: {
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    position: 'relative',
+    flex: 1,
+    justifyContent: 'center'
+  }
+};
+
+```
+
+* We need to apply the styles, and we wil also be destructuring them
+
+* In EmployeeEdit: `import { Card, CardSection, Button, Confirm } from './common';`
+
+* Add CardSection:
+
+```javascript
+<CardSection>
+  <Button onPress={() => this.setState({ showModal: !this.state.showModal })}>
+    Fire Employee
+  </Button>
+</CardSection>
+
+<Confirm
+  visible={this.state.showModal}
+>
+  Are you sure you want to delete this?
+</Confirm>
+```
+
+* We need component level state to figure out when to show confrm button:`state = { showModal: false };`
+* `<Button onPress={() => this.setState({ showModal: !this.state.showModal })}>`
+
+#### EMULATOR - WORKING w/o modal confirm button (yes/no)
 
 -------------------------------------------------
 
