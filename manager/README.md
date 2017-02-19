@@ -1443,8 +1443,35 @@ export { Confirm };
 
 -------------------------------------------------
 
-### 158. Modals as a Reusable Component
+### 158. The Modal Component Continued
 
+* We need a lot of JSX in Confirm.js
+* Think of the modal as a big container - we still need to pass in View, CardSection, Text
+* We need two Buttons inside the CardSection - Yes and No buttons
+* We're going to pass {children} into the Text tag: `<Text>{children}</Text>`
+* If you put components or text between a component tag it is called with  `{children}`
+* So we'll put the several varibales in the component as a method
+* `const Confirm = ({ children, visible, onAccept, onDecline }) => {`
+* For the button press we are going to pass like onAccept w/o parentheses, so we are REFERENCING a function
+
+```javascript
+<Button onPress={onAccept}>Yes</Button>
+<Button onPress={onDecline}>No</Button>
+```
+
+* In Modal tag:
+
+```javascript
+<Modal
+  visible={visible}
+  transparent
+  animationType="slide"
+  onRequestClose={() => {}}
+>
+```
+
+* We're passing in a prop for visible because it may or may not be visible
+* 
 
 
 -------------------------------------------------
