@@ -1573,6 +1573,23 @@ return () => {
 
 -------------------------------------------------
 
+### 161. Wiring up Employee Delete
+
+* In EmployeeEdit.js: `import { employeeUpdate, employeeSave, employeeDelete } from '../actions';`
+* In the connect statement add in employeeDelete
+* We're going to add this to the onAccept helper and pass it the uid of the employee we want to delete
+
+```javascript
+const { uid } = this.props.employee;
+this.props.employeeDelete({ uid });
+```
+
+-------------------------------------------------
+
+# EMULATOR - WORKING - FINISHED
+
+
+-------------------------------------------------
 
 
 ```javascript
