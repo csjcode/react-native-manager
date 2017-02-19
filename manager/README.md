@@ -1409,13 +1409,41 @@ onTextPress() {
 ```
 
 
-* So far Text Button press is NOT WORKING
+* EMULATOR - WORKING
 
 
 -------------------------------------------------
 
 ### 157. Modals as a Reusable Component
 
+* Modal: https://facebook.github.io/react-native/docs/modal.html
+* On Android its required to put in an onRequestClose method in the Modal component tag
+* Last Texting button workson Android but didn't work in iOS because it only works on actual device for iOS
+* Create a new file `src\components\common\Confirm.js`
+
+```javascript
+import React from 'react';
+import { Text, View, Modal } from 'react-native';
+import { CardSection } from './CardSection';
+import { Button } from './Button';
+
+const Confirm = () => {
+
+};
+
+export { Confirm };
+
+```
+
+
+* Note: the export is with the curlies because it's being included in the index file
+
+* Add into common/index.js `export * from './Confirm';`
+
+
+-------------------------------------------------
+
+### 158. Modals as a Reusable Component
 
 
 
