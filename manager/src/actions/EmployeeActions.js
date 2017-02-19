@@ -21,7 +21,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
       .push({ name, phone, shift })
       .then(() => {
         dispatch({ type: EMPLOYEE_CREATE });
-        Actions.main().employeeList({ type: 'reset' });
+        Actions.employeeList({ type: 'reset' });
       });
   };
 };
@@ -34,5 +34,15 @@ export const employeesFetch = () => {
       .on('value', snapshot => {
         dispatch({ type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val() });
       });
+  };
+};
+
+export const employeeSave = ({ name, phone, shift, uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .set({ name, phone, shift })
+      .then(() => console.log('saved!'));
   };
 };

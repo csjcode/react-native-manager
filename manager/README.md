@@ -1315,6 +1315,46 @@ const mapStateToProps = (state) => {
 #### EMULATOR - WORKING - but on saving  in the Edit screen only shows in console log
 
 
+-------------------------------------------------
+
+### 154. Updating Firebase Records
+
+* Now we have to rplace the console log with an ACTION creator that will SAVE the data to Firebase
+* We need to write the ACTION, then import it into EmployeeEdit.js
+* We are updating an existing record so we need to make sure to get the uid `name, phone, shift, uid`
+
+```javascript
+export const employeeSave = ({ name, phone, shift, uid }) => {
+  const { currentUser } = firebase.auth();
+
+  return () => {
+    firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
+      .set({ name, phone, shift })
+      .then(() => console.log('saved!'));
+  };
+};
+```
+
+* Next we set up the onButtonPress helper function
+
+
+```javascript
+onButtonPress() {
+  const { name, phone, shift } = this.props;
+
+  this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
+}
+```
+
+* Remember that `this.props.employee.uid` is passed from the Action in EmployeeList
+
+* EMULATOR - WORKING - COMMIT
+
+-------------------------------------------------
+
+### 154. Updating Firebase Records
+
+
 
 
 -------------------------------------------------
