@@ -6,9 +6,19 @@ https://github.com/csjcode/react-native-manager/tree/master/manager
 
 ###
 
-* I started this React Native Employee Manager app by following the instructions from the React Native Udemy course
-* Next, I added some of my own code with the Nachos-UI styling library and various enhancements.
-* Following this I plan to add some more features, feel free to make any contributions
+* I started this React Native Employee Manager app by following the instructions from the React Native Udemy course (Stephen Grider instructor)
+
+* Next, I added some of my own code with the Nachos-UI styling library and various coding enhancements to iron out some issues.
+
+* Next, I plan to add some more features, feel free to make any contributions
+
+### Potential New Features
+
+* Employee Status/Schedule (clocked in?)
+* Employee task list (ie. tickets) - predefined and new
+* What task are they doing currently, what has been done?
+* Employee Requests
+* Google Maps API
 
 ### Install
 
