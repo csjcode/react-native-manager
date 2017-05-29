@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text } from 'react-native';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
-import { Card, CardSection, Input, Button, Spinner } from './common';
+import { Card, CardSection, Input, Spinner } from './common';
+import { Button } from 'nachos-ui'
 
 class LoginForm extends Component {
   onEmailChange(text) {

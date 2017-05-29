@@ -7,6 +7,7 @@ import { employeeUpdate, employeeSave, employeeDelete } from '../actions';
 import { Card, CardSection, Button, Confirm } from './common';
 
 class EmployeeEdit extends Component {
+  
   state = { showModal: false };
 
   componentWillMount() {
