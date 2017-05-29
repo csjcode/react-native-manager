@@ -10,6 +10,7 @@
     "eslint-rallycoding": "^1.2.0",
     "firebase": "^3.6.9",
     "lodash": "^4.17.4",
+    "nachos-ui": "^0.1.2",
     "react": "~15.4.0",
     "react-native": "0.41.2",
     "react-native-communications": "^2.2.1",
